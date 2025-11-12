@@ -36,3 +36,9 @@ jobs:
       - name: Upload files to S3
         run: |
            aws s3 cp . s3://project2.lareinek-services.site/ --recursive
+
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: E1MMYKOE2HESP9
+          PATHS: "/*"
